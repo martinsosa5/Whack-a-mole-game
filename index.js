@@ -56,5 +56,10 @@ gameContainer.addEventListener("click", (e) =>{
         textElement.setAttribute("class", "whack-text");
         textElement.innerHTML = "Whack!";
         bushElement.appendChild(textElement); //agregamos el texto creado en la variable textElement
+
+        //eliminar el texto "whack!" despues de 300 milisegundos
+        setTimeout(()=>{
+            textElement.remove();
+        }, 300);
     }
 })
