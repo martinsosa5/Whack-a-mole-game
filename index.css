@@ -35,7 +35,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 5px; /*espacio entre elementos*/
 }
 
 #start-game,
@@ -103,7 +103,7 @@ body{
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 0;
+    z-index: 10;
 }
 
 .whack-text{

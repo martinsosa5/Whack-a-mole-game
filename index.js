@@ -52,6 +52,9 @@ gameContainer.addEventListener("click", (e) =>{
 
         // muestra el texto animado donde haya ocurrido el click
         const bushElement = e.target.parentElement.previousElementSibling;
+         /* Este metodo selecciona el hermano anterior en el arbol DOM desde el elemento padre(parentElement).
+         En este contexto, se asume que el arbusto (o la ubicacion donde debe mostrarse el texto) es el
+         elemento hermano que esta justo antes del topo en el DOM. */
         let textElement = document.createElement("span");
         textElement.setAttribute("class", "whack-text");
         textElement.innerHTML = "Whack!";
