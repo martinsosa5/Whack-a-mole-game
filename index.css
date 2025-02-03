@@ -60,7 +60,7 @@ body{
     max-width: 800px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(4,1fr);
     gap: 20px;
 }
 
@@ -115,10 +115,17 @@ body{
     left: 50%;
     transform: translateX(-50%);
 }
-
+/* Esta media quierie es para ocultar el ultimo item para escritorio y que sean
+8 items y entren en dos filas de 4 */
+@media (min-width: 845px){
+  .item:last-child {
+    display: none; /* Oculta el último ítem */
+}
+}
 
 /* Media queries para dispositivos más pequeños */
-@media (max-width: 768px) {
+
+@media (max-width: 834px) {
     h1 {
       font-size: 1.8rem; /* Reduce el tamaño del título */
     }
@@ -135,7 +142,8 @@ body{
   
     .container {
       grid-template-columns: repeat(3, 1fr); /* Ajusta a 2 columnas */
-      gap: 15px;
+      gap: 10px;
+      max-width: 600px;
     }
   
     .item {
@@ -159,7 +167,7 @@ body{
     }
   }
   
-  @media (max-width: 834px) {
+  @media (max-width: 480px) {
     h1 {
       font-size: 1.5rem; /* Reduce aún más el tamaño del título */
     }
@@ -177,7 +185,7 @@ body{
     .container {
         grid-template-columns: repeat(3, 1fr); /* Ajusta a 2 columnas */
         gap: 1px;
-        max-width: 500px;
+        max-width: 400px;
     }
   
     .item {
