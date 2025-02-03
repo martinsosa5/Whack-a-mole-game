@@ -60,7 +60,7 @@ body{
     max-width: 800px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(5,1fr);
     gap: 20px;
 }
 
@@ -159,7 +159,7 @@ body{
     }
   }
   
-  @media (max-width: 480px) {
+  @media (max-width: 834px) {
     h1 {
       font-size: 1.5rem; /* Reduce aún más el tamaño del título */
     }
@@ -175,8 +175,9 @@ body{
     }
   
     .container {
-     
-      gap: 10px;
+        grid-template-columns: repeat(3, 1fr); /* Ajusta a 2 columnas */
+        gap: 1px;
+        max-width: 500px;
     }
   
     .item {
