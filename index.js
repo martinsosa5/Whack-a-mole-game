@@ -65,4 +65,81 @@ gameContainer.addEventListener("click", (e) =>{
             textElement.remove();
         }, 300);
     }
-})
+});
+
+
+//Logica para iniciar el juego
+function startGameLogic(){
+    countDown = 20; //reinicia el contador del tiempo
+    score = 0; // reinicia el puntaje
+
+    scoreCount.innerHTML = score;
+    timeCount.innerHTML = countDown;
+
+    //Configura un intervalo que decrementa el contador de tiempo cada segundo
+    startTime = setInterval(()=>{
+        timeCount.innerHTML = countDown;
+        countDown--;
+        if(countDown < 0){
+            endGame();
+        }
+    },1000)
+
+    //Configura otro intervalo que hace aparecer a los topos cada 600 milisigundos
+    startGame = setInterval(() =>{
+        showMole();
+    },600);
+
+}
+
+// Funcion que termina el juego
+
+function endGame(){
+    clearInterval(startGame); // detiene el intervalo de aparicion de los topos
+    clearInterval(startTime); // detiene el intervalo de decremento del tiempo
+    timeCount.innerHTML = "0";
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0; //Reinicia la musica para el proximo juego
+    restartButton.style.display = "block"; // muestra el boton de reinicio
+}
+
+// Funcion que reinicia el juego
+function resetGame(){
+    countDown = 20;
+    score = 0;
+    scoreCount.innerHTML = score;
+    timeCount.innerHTML = countDown;
+
+    clearInterval(startTime);
+    clearInterval(startGame);
+
+    // Asegura que todos los topos esten ocultos
+    allMoleItems.forEach((item =>{
+        const mole = item.querySelector(".mole");
+        mole.classList.remove("mole-appear");
+    }))
+}
+
+// Funcion que muestra un topo al azar
+function showMole() {
+    if(countDown <= 0){
+        return;
+    }
+
+    let moleToAppear = allMoleItems[getRandomValue()].querySelector(".mole");
+    moleToAppear.classList.add("mole-appear");
+    hideMole(moleToAppear); // esta funcion configura la desaparicion del mole
+}
+
+// Genera un indice aleatorio para seleccioar un topo
+function getRandomValue(){
+    let rand = Math.random() * allMoleItems.length;
+    return Math.floor(rand); //me devuelve un valor entero
+}
+
+// Hace que el topo desaparezca despues de 1 segundo
+function hideMole(moleItem){
+    setTimeout(()=>{
+        moleItem.classList.remove("mole-appear");
+    },1000);
+}
